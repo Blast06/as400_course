@@ -1,0 +1,79 @@
+  5770WDS V7R4M0  190419                  LISTADO FUENTE SEU                            20/05/22 15:29:20    ALAVERD      PÁG.    1
+  ARCHIVO FUENTE  . . . . .  JULIOLIB/QRPGLESRC
+  MIEMBRO . . . . . . . . .  MDP01L
+  SEQNBR*...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+... 0
+    100      H   DATFMT(*ISO)                                                                                           10/05/22
+    200      H   DATEDIT(*DMY)                                                                                          10/05/22
+    300       *-------------------                                                                                      10/05/22
+    400       *Descripcion de Archivos a utilizar                                                                       10/05/22
+    500       *-------------------                                                                                      10/05/22
+    600      FTBDP0101  UF A E           K DISK                                                                         10/05/22
+    700      FMDP01SCJ  CF   E             WORKSTN                                                                      19/05/22
+    800       *-------------------                                                                                      10/05/22
+    900       *Logica del Programa                                                                                      10/05/22
+   1000       *-------------------                                                                                      10/05/22
+   1100      C                   DOW         NOT  *IN03                                                                 10/05/22
+   1200      C                   EXFMT     SC01                                                                         10/05/22
+   1300      C   03              LEAVE                                                                                  10/05/22
+   1400       *Valida Id                                                                                                10/05/22
+   1500      C                   IF         IDDP01=0                                                                    10/05/22
+   1600      C                   SETON                                        30                                        10/05/22
+   1700      C                   ITER                                                                                   10/05/22
+   1800      C                   ENDIF                                                                                  10/05/22
+   1900      c     IDDP01        CHAIN     TBDP0101                           40                                        20/05/22
+   2000      C  N40              MOVE      FECR01        FECHA                                                          10/05/22
+   2100      C                   SETOFF                                       10                                        10/05/22
+   2200      C                   DOW        NOT *IN10                                                                   10/05/22
+   2300      C                   EVAL       SINO=' '                                                                    12/05/22
+   2400      C                   EXFMT     SC02                                                                         10/05/22
+   2500      C                   SETOFF                                       313280                                    12/05/22
+   2600       **Valida Teclas de funciones F12 y F3                                                                     10/05/22
+   2700      C                   IF         *IN12 OR *IN03                                                              10/05/22
+   2800      C                   LEAVE                                                                                  10/05/22
+   2900      C                   ENDIF                                                                                  10/05/22
+   3000       *borrar registro                                                                                          12/05/22
+   3100      C                   IF          NOT *IN40 AND *IN08                                                        12/05/22
+   3200      C                   EVAL       MSG='REALMENTE DESEA BORRAR?'                                               12/05/22
+   3300      C                   EXFMT     SC03                                                                         12/05/22
+   3400      C                   IF        SINO='S'                                                                     12/05/22
+   3500      C                   DELETE    RDP01                                                                        12/05/22
+   3600      C                   SETON                                        80                                        12/05/22
+   3700      C                   SETOFF                                       08                                        12/05/22
+   3800      C                   EVAL      MSG='REGISTRO BORRADO'                                                       12/05/22
+   3900      C                   EXFMT     SC03                                                                         12/05/22
+   4000      C                   LEAVE                                                                                  12/05/22
+   4100      C                   ELSE                                                                                   12/05/22
+   4200      C                   ITER                                                                                   12/05/22
+   4300      C                   ENDIF                                                                                  12/05/22
+   4400      C                   ENDIF                                                                                  12/05/22
+   4500       *Valida Descripcion                                                                                       10/05/22
+   4600      C                   IF        DEDP01=' '                                                                   10/05/22
+   4700      C                   EVAL      MSG='CAMPO NO PUEDE ESTAR EN -                                               12/05/22
+   4800      C                             BLANCO, VERIFIQUE'                                                           12/05/22
+   4900      C                   EXFMT     SC03                                                                         12/05/22
+   5000      C                   ITER                                                                                   10/05/22
+   5100      C                   ENDIF                                                                                  10/05/22
+   5200       *validad Fecha                                                                                            10/05/22
+   5300      C     *YMD          TEST(D)                 FECHA                  31                                      10/05/22
+  5770WDS V7R4M0  190419                  LISTADO FUENTE SEU                            20/05/22 15:29:20    ALAVERD      PÁG.    2
+  ARCHIVO FUENTE  . . . . .  JULIOLIB/QRPGLESRC
+  MIEMBRO . . . . . . . . .  MDP01L
+  SEQNBR*...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+... 0
+   5400      C   31              ITER                                                                                   10/05/22
+   5500       *Si no existe registro, lo creamos, de los contrario actualizamos                                         10/05/22
+   5600      C                   MOVE      FECHA         FECR01                                                         10/05/22
+   5700      C                   IF         *IN40                                                                       10/05/22
+   5800      C                   WRITE     RDP01                                                                        10/05/22
+   5900      C                   ELSE                                                                                   10/05/22
+   6000      C                   UPDATE    RDP01                                                                        10/05/22
+   6100      C                   ENDIF                                                                                  10/05/22
+   6200      C                   LEAVE                                                                                  10/05/22
+   6300      C                   ENDDO                                                                                  10/05/22
+   6400      C                   CLEAR                   SC02                                                           10/05/22
+   6500                                                                                                                 10/05/22
+   6600                                                                                                                 10/05/22
+   6700      C                   ENDDO                                                                                  10/05/22
+   6800                                                                                                                 10/05/22
+   6900                                                                                                                 10/05/22
+   7000      C                   SETON                                        LR                                        10/05/22
+                                  * * * *  F I N  D E  F U E N T E  * * * *

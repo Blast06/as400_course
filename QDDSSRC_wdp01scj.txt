@@ -1,0 +1,94 @@
+ 5770SS1 V7R4M0  190621                  Descripción de datos           JULIOLIB/WDP01SCJ       20/05/22 14:42:59      Página    1
+ Nombre de archivo . . . . . . . . . . . . . . . . . :   WDP01SCJ
+   Nombre de biblioteca  . . . . . . . . . . . . . . :   JULIOLIB
+ Atributo de archivo . . . . . . . . . . . . . . . . :   Pantalla
+ Archivo fuente que contiene DDS . . . . . . . . . . :   QDDSSRC
+   Nombre de biblioteca  . . . . . . . . . . . . . . :   JULIOLIB
+ Miembro fuente que contiene DDS . . . . . . . . . . :   WDP01SCJ
+ Miembro fuente de último cambio . . . . . . . . . . :   19/05/22  20:33:41
+ Opciones de listado de fuente . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ Nivel de gravedad de generación de DDS  . . . . . . :   20
+ Nivel de gravedad de distintivos de DDS . . . . . . :   00
+ Autorización  . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Sustituir archivo . . . . . . . . . . . . . . . . . :   *YES
+ Texto . . . . . . . . . . . . . . . . . . . . . . . :
+ Compilador  . . . . . . . . . . . . . . . . . . . . :   Procesador de descripción de datos IBM System i5
+                                   Fuente de descripción de datos
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Fecha
+     10       A*%%TS  SD  20220519  203155  JDELGADO    REL-V7R4M0  5770-WDS              19/05/22
+     20       A*%%EC                                                                      19/05/22
+     30       A                                      DSPSIZ(24 80 *DS3)                   19/05/22
+     40       A          R SC01                      SFL                                  18/05/22
+     50       A*%%TS  SD  20220518  085826  MDLCRUZ     REL-V7R4M0  5770-WDS              18/05/22
+     60       A            SEL            1A  B  4  2                                     18/05/22
+     70       A            IDDP01    R        O  4  5REFFLD(RDP01/IDDP01 JULIOLIB/TBDP01) 18/05/22
+     80       A            DEDP01    R        O  4 11REFFLD(RDP01/DEDP01 JULIOLIB/TBDP01) 18/05/22
+     90       A          R SC02                      SFLCTL(SC01)                         19/05/22
+    100       A*%%TS  SD  20220519  203155  JDELGADO    REL-V7R4M0  5770-WDS              19/05/22
+    110       A N50                                  SFLDSP                               19/05/22
+    120       A N50                                  SFLDSPCTL                            19/05/22
+    130       A  50                                  SFLCLR                               19/05/22
+    140       A N99                                  SFLEND(*MORE)                        19/05/22
+    150       A                                      SFLSIZ(0005)                         19/05/22
+    160       A                                      SFLPAG(0005)                         19/05/22
+    170       A  31                                  SFLMSG('31- opcion de seleccion no - 19/05/22
+    180       A                                      valida')                             19/05/22
+    190       A                                      WINDOW(10 10 10 60)                  19/05/22
+    200       A                                      WDWBORDER((*COLOR BLU) (*DSPATR RI)- 19/05/22
+    210       A                                       (*CHAR '        '))                 19/05/22
+    220       A                                      USRRSTDSP                            19/05/22
+    230       A                                  3  2'Sel Id dp Descripcion'              19/05/22
+    240       A                                  1  2'Buscar Descripcion'                 19/05/22
+    250       A            BUSCAR        50A  B  1 23CNTFLD(025)                          19/05/22
+    260       A                                  2  3'1'                                  19/05/22
+    270       A          R SC03                                                           18/05/22
+    280       A*%%TS  SD  20220518  085826  MDLCRUZ     REL-V7R4M0  5770-WDS              18/05/22
+    290       A                                      KEEP                                 18/05/22
+    300       A                                      ASSUME                               18/05/22
+    310       A            COM            3S 0B  2  8                                     18/05/22
+                         * * * * *   F I N   D E   F U E N T E   * * * * *
+ 5770SS1 V7R4M0  190621                  Descripción de datos           JULIOLIB/WDP01SCJ       20/05/22 14:42:59      Página    2
+                                          Fuente ampliado
+                                                                                          Campo       Posición almac. intermedio
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 longitud    Salida  Entrada
+     30                                              DSPSIZ(24 80 *DS3)
+     40                  R SC01                      SFL
+     60                    SEL            1A  B  4  2                                         1            1       1
+     70                    IDDP01         5S 0O  4  5                                         5            2       2
+ * Campo al que se hace referencia . . . . :   IDDP01
+ *   Formato . . . . . . . . . . . . . . . :   RDP01
+ *   Archivo . . . . . . . . . . . . . . . :   TBDP01
+ *   Biblioteca  . . . . . . . . . . . . . :   JULIOLIB
+     80                    DEDP01        50A  O  4 11                                        50            7       7
+ * Campo al que se hace referencia . . . . :   DEDP01
+ *   Formato . . . . . . . . . . . . . . . :   RDP01
+ *   Archivo . . . . . . . . . . . . . . . :   TBDP01
+ *   Biblioteca  . . . . . . . . . . . . . :   JULIOLIB
+               * Posiciones de almacenamiento intermedio de salida indicador de opción:
+               *  *IN31 0003   *IN50 0001   *IN99 0002
+     90                  R SC02
+                 *DS3                                SFLSIZ(0005) SFLPAG(005)
+                 *DS3                                WINDOW(10 10 10 60)
+     90                                              SFLCTL(SC01)
+    110         N50                                  SFLDSP
+    120         N50                                  SFLDSPCTL
+    130          50                                  SFLCLR
+    140         N99                                  SFLEND(*MORE)
+    170          31                                  SFLMSG('31- opcion de seleccion no -
+    170                                              valida')
+    200                                              WDWBORDER((*COLOR BLU) (*DSPATR RI)-
+    200                                               (*CHAR '        ')) USRRSTDSP
+    230                                          3  2'Sel Id dp Descripcion'                 21
+    240                                          1  2'Buscar Descripcion'                    18
+    250                    BUSCAR        50A  B  1 23CNTFLD(025)                             50            4       1
+    260                                          2  3'1'                                      1
+    270                  R SC03                      KEEP ASSUME
+    310                    COM            3S 0B  2  8                                         3            1       1
+                 * * * * *   F I N   D E   F U E N T E   A M P L I A D O   * * * * *
+ 5770SS1 V7R4M0  190621                  Descripción de datos           JULIOLIB/WDP01SCJ       20/05/22 14:42:59      Página    3
+                                       Resumen de mensajes
+    Total          Informativo            Aviso          Error       Grave
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Mensaje . . . . :   Archivo WDP01SCJ creado en la biblioteca JULIOLIB.
+                         * * * * *   F I N   D E   C O M P I L A C I Ó N   * * * * *

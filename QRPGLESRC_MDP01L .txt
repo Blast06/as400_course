@@ -1,0 +1,316 @@
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.      1
+  Mandato  . . . . . . . . . . . . :   CRTBNDRPG
+    Emitido por  . . . . . . . . . :     JDELGADO
+  Programa . . . . . . . . . . . . :   MDP01L
+    Biblioteca . . . . . . . . . . :     JULIOLIB
+  Texto descriptivo  . . . . . . . :   *SRCMBRTXT
+  Miembro Fuente . . . . . . . . . :   MDP01L
+  Archivo Fuente . . . . . . . . . :   QRPGLESRC
+    Biblioteca . . . . . . . . . . :     JULIOLIB
+    CCSID  . . . . . . . . . . . . :     65535
+  Texto descriptivo  . . . . . . . :   Entrada de Departamento
+  Ultimo Cambio  . . . . . . . . . :   19/05/22  18:26:16
+  Nivel de gravedad de generación  :   10
+  Grupo de activación por omisión  :   *YES
+  Opciones de compilador . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
+                                       *EXPDDS    *EXT       *NOSHOWSKP *NOSRCSTMT
+                                       *DEBUGIO   *UNREF     *NOEVENTF
+  Vistas de depuración . . . . . . :   *ALL
+Clave de cifrado de depuración . . :   *NONE
+  Salida . . . . . . . . . . . . . :   *PRINT
+  Nivel de optimización  . . . . . :   *NONE
+  Sangrado del listado fuente  . . :   *NONE
+  Opciones de conversión de tipo . :   *NONE
+  Secuencia de ordenación  . . . . :   *HEX
+  Identificador de idioma  . . . . :   *JOBRUN
+  Sustituir programa . . . . . . . :   *YES
+  Perfil de usuario  . . . . . . . :   *USER
+  Autorización . . . . . . . . . . :   *LIBCRTAUT
+  Truncar numéricos  . . . . . . . :   *YES
+  Arreglar numérico  . . . . . . . :   *NONE
+  Release destino  . . . . . . . . :   *CURRENT
+  Permitir valores nulos . . . . . :   *NO
+  Definir nombres de condición . . :   *NONE
+  Habilitar recogida de rendimiento:   *PEP
+  Datos de perfilado . . . . . . . :   *NOCOL
+  Opc Código interno bajo licencia :
+  Generar interfaz de programa . . :   *NO
+  Directorio Include . . . . . . . :
+  Opciones del preprocesador . . . :   *NONE
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.      2
+Línea  <---------------------- Especificaciones del Fuente ----------------------><--- Comentarios --> DO  Pág.  Cambio FuenSec.
+Número ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Núm Lín.  Fecha  ID  Número
+                          L i s t a d o   F u e n t e
+     1 H   DATFMT(*ISO)                                                                                          220510     000100
+     2 H   DATEDIT(*DMY)                                                                                         220510     000200
+     3  *-------------------                                                                                     220510     000300
+     4  *Descripcion de Archivos a utilizar                                                                      220510     000400
+     5  *-------------------                                                                                     220510     000500
+     6 FTBDP0101  UF A E           K DISK                                                                        220510     000600
+        *--------------------------------------------------------------------------------------------*
+        *                               Nombre en RPG    Nombre externo                              *
+        * Nombre de archivo  . . . . :  TBDP0101         JULIOLIB/TBDP0101                           *
+        * Formato(s) de registro . . :  RDP01            RDP01                                       *
+        *--------------------------------------------------------------------------------------------*
+     7 FMDP01SCJ  CF   E             WORKSTN                                                                     220519     000700
+     8  *-------------------                                                                                     220510     000800
+     9  *Logica del Programa                                                                                     220510     000900
+    10  *-------------------                                                                                     220510     001000
+        *--------------------------------------------------------------------------------------------*
+        *                               Nombre en RPG    Nombre externo                              *
+        * Nombre de archivo  . . . . :  MDP01SCJ         JULIOLIB/MDP01SCJ                           *
+        * Formato(s) de registro . . :  SC01             SC01                                        *
+        *                               SC02             SC02                                        *
+        *                               SC03             SC03                                        *
+        *--------------------------------------------------------------------------------------------*
+    11=IRDP01                                                                                                              1000001
+        *--------------------------------------------------------------------------------------------*                     1
+        * Formato de registro RPG  . :  RDP01                                                        *                     1
+        * Formato externo  . . . . . :  RDP01 : JULIOLIB/TBDP0101                                    *                     1
+        *--------------------------------------------------------------------------------------------*                     1
+    12=I                             S    1    5 0IDDP01                                                                   1000002
+    13=I                             A    6   55  DEDP01                                                                   1000003
+    14=I                        *ISO-D   56   65  FECR01                                                                   1000004
+    15=ISC01                                                                                                               2000001
+        *--------------------------------------------------------------------------------------------*                     2
+        * Formato de registro RPG  . :  SC01                                                         *                     2
+        * Formato externo  . . . . . :  SC01 : JULIOLIB/MDP01SCJ                                     *                     2
+        *--------------------------------------------------------------------------------------------*                     2
+    16=I                             N    1    1  *IN03                           F3 salir                                 2000002
+    17=I                             S    2    6 0IDDP01                                                                   2000003
+    18=ISC02                                                                                                               3000001
+        *--------------------------------------------------------------------------------------------*                     3
+        * Formato de registro RPG  . :  SC02                                                         *                     3
+        * Formato externo  . . . . . :  SC02 : JULIOLIB/MDP01SCJ                                     *                     3
+        *--------------------------------------------------------------------------------------------*                     3
+    19=I                             N    1    1  *IN03                           F3 salir                                 3000002
+    20=I                             N    3    3  *IN08                           F8 BORRAR                                3000003
+    21=I                             N    2    2  *IN12                           F12 Retornar                             3000004
+    22=I                             A    4   53  DEDP01                                                                   3000005
+    23=I                             S   54   61 0FECHA                                                                    3000006
+    24=ISC03                                                                                                               4000001
+        *--------------------------------------------------------------------------------------------*                     4
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.      3
+Línea  <---------------------- Especificaciones del Fuente ----------------------><--- Comentarios --> DO  Pág.  Cambio FuenSec.
+Número ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Núm Lín.  Fecha  ID  Número
+        * Formato de registro RPG  . :  SC03                                                         *                     4
+        * Formato externo  . . . . . :  SC03 : JULIOLIB/MDP01SCJ                                     *                     4
+        *--------------------------------------------------------------------------------------------*                     4
+    25=I                             A    1    1  SINO                                                                     4000002
+    26 C                   DOW         NOT  *IN03                                                      B01       220510     001100
+    27 C                   EXFMT     SC01                                                               01       220510     001200
+    28 C   03              LEAVE                                                                        01       220510     001300
+    29  *Valida Id                                                                                               220510     001400
+    30 C                   IF         IDDP01=0                                                         B02       220510     001500
+    31 C                   SETON                                        30----                          02       220510     001600
+    32 C                   ITER                                                                         02       220510     001700
+    33 C                   ENDIF                                                                       E02       220510     001800
+    34 C     IDDP01        CHAIN     TBDP0101                           40----                          01       220510     001900
+    35 C  N40              MOVE      FECR01        FECHA                                                01       220510     002000
+    36 C                   SETOFF                                       10----                          01       220510     002100
+    37 C                   DOW        NOT *IN10                                                        B02       220510     002200
+    38 C                   EVAL       SINO=' '                                                          02       220512     002300
+    39 C                   EXFMT     SC02                                                               02       220510     002400
+    40 C                   SETOFF                                       313280                          02       220512     002500
+    41  **Valida Teclas de funciones F12 y F3                                                                    220510     002600
+    42 C                   IF         *IN12 OR *IN03                                                   B03       220510     002700
+    43 C                   LEAVE                                                                        03       220510     002800
+    44 C                   ENDIF                                                                       E03       220510     002900
+    45  *borrar registro                                                                                         220512     003000
+    46 C                   IF          NOT *IN40 AND *IN08                                             B03       220512     003100
+    47 C                   EVAL       MSG='REALMENTE DESEA BORRAR?'                                     03       220512     003200
+    48 C                   EXFMT     SC03                                                               03       220512     003300
+    49 C                   IF        SINO='S'                                                          B04       220512     003400
+    50 C                   DELETE    RDP01                                                              04       220512     003500
+    51 C                   SETON                                        80----                          04       220512     003600
+    52 C                   SETOFF                                       08----                          04       220512     003700
+    53 C                   EVAL      MSG='REGISTRO BORRADO'                                             04       220512     003800
+    54 C                   EXFMT     SC03                                                               04       220512     003900
+    55 C                   LEAVE                                                                        04       220512     004000
+    56 C                   ELSE                                                                        X04       220512     004100
+    57 C                   ITER                                                                         04       220512     004200
+    58 C                   ENDIF                                                                       E04       220512     004300
+    59 C                   ENDIF                                                                       E03       220512     004400
+    60  *Valida Descripcion                                                                                      220510     004500
+    61 C                   IF        DEDP01=' '                                                        B03       220510     004600
+    62 C                   EVAL      MSG='CAMPO NO PUEDE ESTAR EN -                                     03       220512     004700
+    63 C                             BLANCO, VERIFIQUE'                                                 03       220512     004800
+    64 C                   EXFMT     SC03                                                               03       220512     004900
+    65 C                   ITER                                                                         03       220510     005000
+    66 C                   ENDIF                                                                       E03       220510     005100
+    67  *validad Fecha                                                                                           220510     005200
+    68 C     *YMD          TEST(D)                 FECHA                --31--                          02       220510     005300
+    69 C   31              ITER                                                                         02       220510     005400
+    70  *Si no existe registro, lo creamos, de los contrario actualizamos                                        220510     005500
+    71 C                   MOVE      FECHA         FECR01                                               02       220510     005600
+    72 C                   IF         *IN40                                                            B03       220510     005700
+    73 C                   WRITE     RDP01                                                              03       220510     005800
+    74 C                   ELSE                                                                        X03       220510     005900
+    75 C                   UPDATE    RDP01                                                              03       220510     006000
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.      4
+Línea  <---------------------- Especificaciones del Fuente ----------------------><--- Comentarios --> DO  Pág.  Cambio FuenSec.
+Número ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Núm Lín.  Fecha  ID  Número
+    76 C                   ENDIF                                                                       E03       220510     006100
+    77 C                   LEAVE                                                                        02       220510     006200
+    78 C                   ENDDO                                                                       E02       220510     006300
+    79 C                   CLEAR                   SC02                                                 01       220510     006400
+    80                                                                                                           220510     006500
+    81                                                                                                           220510     006600
+    82 C                   ENDDO                                                                       E01       220510     006700
+    83                                                                                                           220510     006800
+    84                                                                                                           220510     006900
+    85 C                   SETON                                        LR----                                   220510     007000
+    86=ORDP01                                                                                                              5000001
+        *--------------------------------------------------------------------------------------------*                     5
+        * Formato de registro RPG  . :  RDP01                                                        *                     5
+        * Formato externo  . . . . . :  RDP01 : JULIOLIB/TBDP0101                                    *                     5
+        *--------------------------------------------------------------------------------------------*                     5
+    87=O                       IDDP01               5S ZONE      5,0                                                       5000002
+    88=O                       DEDP01              55A CHAR       50                                                       5000003
+    89=O                       FECR01              65D DATE *ISO- 10                                                       5000004
+    90=OSC01                                                                                                               6000001
+        *--------------------------------------------------------------------------------------------*                     6
+        * Formato de registro RPG  . :  SC01                                                         *                     6
+        * Formato externo  . . . . . :  SC01 : JULIOLIB/MDP01SCJ                                     *                     6
+        *--------------------------------------------------------------------------------------------*                     6
+    91=O                       *IN30                1N CHAR        1                                                       6000002
+    92=O                       IDDP01               6S ZONE      5,0                                                       6000003
+    93=OSC02                                                                                                               7000001
+        *--------------------------------------------------------------------------------------------*                     7
+        * Formato de registro RPG  . :  SC02                                                         *                     7
+        * Formato externo  . . . . . :  SC02 : JULIOLIB/MDP01SCJ                                     *                     7
+        *--------------------------------------------------------------------------------------------*                     7
+    94=O                       *IN31                3N CHAR        1                                                       7000002
+    95=O                       *IN32                2N CHAR        1                                                       7000003
+    96=O                       *IN40                1N CHAR        1                                                       7000004
+    97=O                       IDDP01               8S ZONE      5,0                                                       7000005
+    98=O                       DEDP01              58A CHAR       50                                                       7000006
+    99=O                       FECHA               66S ZONE      8,0                                                       7000007
+   100=OSC03                                                                                                               8000001
+        *--------------------------------------------------------------------------------------------*                     8
+        * Formato de registro RPG  . :  SC03                                                         *                     8
+        * Formato externo  . . . . . :  SC03 : JULIOLIB/MDP01SCJ                                     *                     8
+        *--------------------------------------------------------------------------------------------*                     8
+   101=O                       *IN08                1N CHAR        1                                                       8000002
+   102=O                       MSG                 59A CHAR       58                                                       8000003
+   103=O                       SINO                60A CHAR        1                                                       8000004
+       * * * * *   F I N   D E   F U E N T E   * * * * *
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.      5
+       M e n s a j e s   d e   D i a g n ó s t i c o   A d i c i o n a l e s
+ ID msje Gr Número Sec.    Texto de mensaje
+*RNF5287 10     68 005300  El campo de resultado es demasiado largo para el formato de
+                           datos especificado.
+ * * * * *   F I N   D E  M E N S A J E S   D E   D I A G N O S T I C O   A D I C I O N A L E S  * * * * *
+      P o s i c i o n e s   A l m.   I n t e r m.   d e   S a l i d a
+Línea  Inic. Fin   Campo o Constante
+Número Pos   Pos
+    87     1     5 IDDP01
+    88     6    55 DEDP01
+    89    56    65 FECR01
+    87     1     5 IDDP01
+    88     6    55 DEDP01
+    89    56    65 FECR01
+    91     1     1 *IN30
+    92     2     6 IDDP01
+    94     3     3 *IN31
+    95     2     2 *IN32
+    96     1     1 *IN40
+    97     4     8 IDDP01
+    98     9    58 DEDP01
+    99    59    66 FECHA
+   101     1     1 *IN08
+   102     2    59 MSG
+   103    60    60 SINO
+ * *  F I N   D E   P O S I C I O N E S   A L M.   I N T E R M.   S A L I D A  * *
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.      6
+             I n f o r m a c i ó n   d e   C a m p o s   d e   C l a v e
+         Archivo        Interno     Externo
+           Registro     nomb campo  nomb campo  Atributos
+      1  TBDP0101
+           RDP01
+                        IDDP01                  ZONE      5,0 SIGNED
+ * *  F I N   D E   I N F O R M A C I O N   C A M P O S   D E   C L A V E   * *
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.      7
+                       R e f e r e n c i a s   C r u z a d a s
+      Referencias de Archivo y Registro:
+         Archivo           Dispos.            Referencias (D=Definidas)
+           Registro
+         MDP01SCJ          WORKSTN                 7D
+           SC01                                    7D     15      27      90
+           SC02                                    7D     18      39      79M
+                                                  93
+           SC03                                    7D     24      48      54
+                                                  64     100
+         TBDP0101          DISCO                   6D     34
+           RDP01                                   6D     11      50      73
+                                                  75      86
+    Referencias de campo global:
+         Campo             Atributos          Referencias (D=Defin. M=Modific.)
+         *IN03             N(1)                   16D     19M     26      42
+         *IN08             N(1)                   20M     46     101
+         *IN10             N(1)                   37
+         *IN12             N(1)                   21D     42
+         *IN30             N(1)                   91
+         *IN31             N(1)                   94
+         *IN32             N(1)                   95
+         *IN40             N(1)                   46      72      96
+         DEDP01            A(50)                  13M     22M     61      88
+                                                  98
+         FECHA             P(8,0)                 23M     35M     68      71
+                                                  99
+         FECR01            D(10*ISO-)             14M     35      71M     89
+         IDDP01            P(5,0)                 12M     17M     30      34
+                                                  87      92      97
+         MSG               A(58)                  47M     53M     62M    102
+         SINO              A(1)                   25M     38M     49     103
+      Referencias de Indicador:
+         Indicador                            Referencias (D=Defin. M=Modific.)
+         03                                       16M     19M     26      28
+                                                  42
+         08                                       20M     46      52D    101
+         10                                       36D     37
+         12                                       21M     42
+         30                                       31D     91
+         31                                       40D     68D     69      94
+         32                                       40D     95
+         40                                       34D     35      46      72
+                                                  96
+*RNF7031 80                                       40D     51D
+         LR                                       85D
+     * * *   F I N   D E   R E F E R E N C I A S   C R U Z A D A S   * * *
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.      8
+                     R e f e r e n c i a s   E x t e r n a s
+      Procedimientos enlazados estáticamente:
+         Procedimiento                        Referencias
+         No existen referencias en el fuente.
+      Campos importados:
+         Campo             Atributos          Definidos
+         No existen referencias en el fuente.
+      Campos exportados:
+         Campo             Atributos          Definidos
+         No existen referencias en el fuente.
+   * * * *   F I N   D E   R E F E R E N C I A S    E X T E R N A S   * * * *
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.      9
+                       R e s u m e n   d e   M e n s a j e s
+ ID msje Gr Número Texto de mensaje
+*RNF7031 00      1 No se hace referencia a un nombre o indicador.
+*RNF5287 10      1 El campo de resultado es demasiado largo para el formato de
+                   datos especificado.
+       * *   F I N   D E   R E S U M E N   D E   M E N S A J E S   * *
+ 5770WDS V7R4M0  190419 RN        IBM ILE RPG             JULIOLIB/MDP01L          ALAVERD    20/05/22 10:55:03        Pág.     10
+                            R e s u m e n   F i n a l
+  Mensajes Totales:
+    Información  (00) . . . . . . . :        1
+    Aviso        (10) . . . . . . . :        1
+    Error        (20) . . . . . . . :        0
+    Error Grave  (30+)  . . . . . . :        0
+    ---------------------------------  -------
+    Total . . . . . . . . . . . . . :        2
+  Totales del Fuente:
+    Registros . . . . . . . . . . . :      103
+    Especificaciones  . . . . . . . :       87
+    Registros de datos  . . . . . . :        0
+    Comentarios . . . . . . . . . . :       12
+         * * * * *   F I N   D E   R E S U M E N   F I N A L   * * * * *
+El programa MDP01L se ha situado en la biblioteca JULIOLIB. La gravedad más alta es 10. Creado el 20/05/22 a las 10:55:04.
+          * * * * *   F I N   D E   C O M P I L A C I O N   * * * * *

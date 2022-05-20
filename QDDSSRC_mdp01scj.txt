@@ -1,0 +1,182 @@
+ 5770SS1 V7R4M0  190621                  Descripción de datos           JULIOLIB/MDP01SCJ       20/05/22 10:54:43      Página    1
+ Nombre de archivo . . . . . . . . . . . . . . . . . :   MDP01SCJ
+   Nombre de biblioteca  . . . . . . . . . . . . . . :   JULIOLIB
+ Atributo de archivo . . . . . . . . . . . . . . . . :   Pantalla
+ Archivo fuente que contiene DDS . . . . . . . . . . :   QDDSSRC
+   Nombre de biblioteca  . . . . . . . . . . . . . . :   JULIOLIB
+ Miembro fuente que contiene DDS . . . . . . . . . . :   MDP01SCJ
+ Miembro fuente de último cambio . . . . . . . . . . :   20/05/22  10:54:37
+ Opciones de listado de fuente . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ Nivel de gravedad de generación de DDS  . . . . . . :   20
+ Nivel de gravedad de distintivos de DDS . . . . . . :   00
+ Autorización  . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Sustituir archivo . . . . . . . . . . . . . . . . . :   *YES
+ Texto . . . . . . . . . . . . . . . . . . . . . . . :
+ Compilador  . . . . . . . . . . . . . . . . . . . . :   Procesador de descripción de datos IBM System i5
+                                   Fuente de descripción de datos
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Fecha
+     10       A*%%TS  SD  20220520  105208  JDELGADO    REL-V7R4M0  5770-WDS              20/05/22
+     20       A*%%EC                                                                      20/05/22
+     30       A                                      DSPSIZ(24 80 *DS3)                   20/05/22
+     40       A          R SC01                                                           19/05/22
+     50       A*%%TS  SD  20220519  183113  MDLCRUZ     REL-V7R4M0  5770-WDS              19/05/22
+     60       A                                      CA03(03 'F3 salir')                  19/05/22
+     70       A                                  1 31'CITRICOS GOMEZ, SRL'                19/05/22
+     80       A                                  2 32'SISTEMA DE NOMINA'                  19/05/22
+     90       A                                  3  2'                           ENTRADA- 19/05/22
+    100       A                                       DE DEPARTAMENTOS                  - 19/05/22
+    110       A                                               '                           19/05/22
+    120       A                                      DSPATR(UL)                           19/05/22
+    130       A                                  1  2USER                                 19/05/22
+    140       A                                  1 69DATE                                 19/05/22
+    150       A                                      EDTCDE(Y)                            19/05/22
+    160       A                                  2  2SYSNAME                              19/05/22
+    170       A                                  2 69TIME                                 19/05/22
+    180       A                                 21  2'                                  - 19/05/22
+    190       A                                                                         - 19/05/22
+    200       A                                               '                           19/05/22
+    210       A                                      DSPATR(UL)                           19/05/22
+    220       A                                 22  3'F3=Salir'                           19/05/22
+    230       A                                  5  4'Id Departamento.:'                  19/05/22
+    240       A                                      DSPATR(HI)                           19/05/22
+    250       A            IDDP01    R        B  5 22REFFLD(RDP01/IDDP01 CURSO22/TBDP01)  19/05/22
+    260       A                                      EDTCDE(Z)                            19/05/22
+    270       A  30                                  ERRMSG('30-Id de Departamento no Pu- 19/05/22
+    280       A                                      ede ser Cero, Reintente')            19/05/22
+    290       A          R SC02                                                           20/05/22
+    300       A*%%TS  SD  20220520  105208  JDELGADO    REL-V7R4M0  5770-WDS              20/05/22
+    310       A                                      CA03(03 'F3 salir')                  20/05/22
+    320       A                                      CA12(12 'F12 Retornar')              20/05/22
+    330       A                                      CA08(08 'F8 BORRAR')                 20/05/22
+    340       A                                  1 31'CITRICOS GOMEZ, SRL'                20/05/22
+    350       A                                  2 32'SISTEMA DE NOMINA'                  20/05/22
+    360       A                                  3  2'                           ENTRADA- 20/05/22
+    370       A                                       DE DEPARTAMENTOS                  - 20/05/22
+    380       A                                               '                           20/05/22
+ 5770SS1 V7R4M0  190621                  Descripción de datos           JULIOLIB/MDP01SCJ       20/05/22 10:54:43      Página    2
+                                  Fuente de descripción de datos
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Fecha
+    390       A                                      DSPATR(UL)                           20/05/22
+    400       A                                  1  2USER                                 20/05/22
+    410       A                                  1 69DATE                                 20/05/22
+    420       A                                      EDTCDE(Y)                            20/05/22
+    430       A                                  2  2SYSNAME                              20/05/22
+    440       A                                  2 69TIME                                 20/05/22
+    450       A                                 21  2'                                  - 20/05/22
+    460       A                                                                         - 20/05/22
+    470       A                                               '                           20/05/22
+    480       A                                      DSPATR(UL)                           20/05/22
+    490       A                                 22  3'F3=Salir'                           20/05/22
+    500       A                                  5  4'Id Departamento.:'                  20/05/22
+    510       A                                      DSPATR(HI)                           20/05/22
+    520       A                                 22 70'F12-Cancel'                         20/05/22
+    530       A                                  7  4'Descripcion.....:'                  20/05/22
+    540       A                                      DSPATR(HI)                           20/05/22
+    550       A                                 10  4'Fecha Creacion..:'                  20/05/22
+    560       A                                      DSPATR(HI)                           20/05/22
+    570       A N40                             22 36'F8= BORRAR'                         20/05/22
+    580       A            IDDP01    R        O  5 23REFFLD(RDP01/IDDP01 JULIOLIB/TBDP01) 20/05/22
+    590       A            DEDP01        50A  B  7 22                                     20/05/22
+    600       A  32                                  ERRMSG('32 - DESCRIPCION NO DEBE ES- 20/05/22
+    610       A                                      TAR EN BLANCO')                      20/05/22
+    620       A            FECHA          8Y 0B 10 22EDTCDE(Z)                            20/05/22
+    630       A  31                                  ERRMSG('31-Fecha no es Valida, Veri- 20/05/22
+    640       A                                      fique')                              20/05/22
+    650       A          R SC03                                                           12/05/22
+    660       A*%%TS  SD  20220512  194327  JDELGADO    REL-V7R4M0  5770-WDS              12/05/22
+    670       A                                      WINDOW(18 10 4 60)                   12/05/22
+    680       A                                      WDWBORDER((*DSPATR RI) (*CHAR '    - 12/05/22
+    690       A                                          '))                              12/05/22
+    700       A            MSG           58   O  2  2                                     12/05/22
+    710       A  08        SINO           1   B  3 25VALUES('S' 'N')                      12/05/22
+    720       A                                  3 27'(S=si, N=no)'                       12/05/22
+                         * * * * *   F I N   D E   F U E N T E   * * * * *
+ 5770SS1 V7R4M0  190621                  Descripción de datos           JULIOLIB/MDP01SCJ       20/05/22 10:54:43      Página    3
+                                          Fuente ampliado
+                                                                                          Campo       Posición almac. intermedio
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 longitud    Salida  Entrada
+     30                                              DSPSIZ(24 80 *DS3)
+               * Posiciones de almacenamiento intermedio de salida indicador de opción:
+               *  *IN30 0001
+               * Posiciones de almacenamiento intermedio de entrada indicador de respuesta:
+               *  *IN03 0001
+     40                  R SC01                      CA03(03 'F3 salir')
+     70                                          1 31'CITRICOS GOMEZ, SRL'                   19
+     80                                          2 32'SISTEMA DE NOMINA'                     17
+     90                                          3  2'                           ENTRADA-    78
+     90                                               DE DEPARTAMENTOS                  -
+     90                                                       ' DSPATR(UL)
+    130                                          1  2USER                                    10
+    140                                          1 69DATE EDTCDE(Y)                           8
+    160                                          2  2SYSNAME                                  8
+    170                                          2 69TIME                                     8
+    180                                         21  2'                                  -    78
+    180                                                                                 -
+    180                                                       ' DSPATR(UL)
+    220                                         22  3'F3=Salir'                               8
+    230                                          5  4'Id Departamento.:' DSPATR(HI)          17
+    250                    IDDP01         5Y 0B  5 22                                         5            2       2
+ * Campo al que se hace referencia . . . . :   IDDP01
+ *   Formato . . . . . . . . . . . . . . . :   RDP01
+ *   Archivo . . . . . . . . . . . . . . . :   TBDP01
+ *   Biblioteca  . . . . . . . . . . . . . :   CURSO22
+    260                                              EDTCDE(Z)
+    270          30                                  ERRMSG('30-Id de Departamento no Pu-
+    270                                              ede ser Cero, Reintente')
+               * Posiciones de almacenamiento intermedio de salida indicador de opción:
+               *  *IN31 0003   *IN32 0002   *IN40 0001
+               * Posiciones de almacenamiento intermedio de entrada indicador de respuesta:
+               *  *IN03 0001   *IN08 0003   *IN12 0002
+    290                  R SC02                      CA03(03 'F3 salir') +
+    320                                              CA12(12 'F12 Retornar') +
+    330                                              CA08(08 'F8 BORRAR')
+    340                                          1 31'CITRICOS GOMEZ, SRL'                   19
+    350                                          2 32'SISTEMA DE NOMINA'                     17
+    360                                          3  2'                           ENTRADA-    78
+    360                                               DE DEPARTAMENTOS                  -
+    360                                                       ' DSPATR(UL)
+    400                                          1  2USER                                    10
+    410                                          1 69DATE EDTCDE(Y)                           8
+    430                                          2  2SYSNAME                                  8
+    440                                          2 69TIME                                     8
+    450                                         21  2'                                  -    78
+    450                                                                                 -
+    450                                                       ' DSPATR(UL)
+    490                                         22  3'F3=Salir'                               8
+    500                                          5  4'Id Departamento.:' DSPATR(HI)          17
+    520                                         22 70'F12-Cancel'                            10
+    530                                          7  4'Descripcion.....:' DSPATR(HI)          17
+    550                                         10  4'Fecha Creacion..:' DSPATR(HI)          17
+ 5770SS1 V7R4M0  190621                  Descripción de datos           JULIOLIB/MDP01SCJ       20/05/22 10:54:43      Página    4
+                                          Fuente ampliado
+                                                                                          Campo       Posición almac. intermedio
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 longitud    Salida  Entrada
+    570         N40                             22 36'F8= BORRAR'                            10
+    580                    IDDP01         5S 0O  5 23                                         5            4
+ * Campo al que se hace referencia . . . . :   IDDP01
+ *   Formato . . . . . . . . . . . . . . . :   RDP01
+ *   Archivo . . . . . . . . . . . . . . . :   TBDP01
+ *   Biblioteca  . . . . . . . . . . . . . :   JULIOLIB
+    590                    DEDP01        50A  B  7 22                                        50            9       4
+    600          32                                  ERRMSG('32 - DESCRIPCION NO DEBE ES-
+    600                                              TAR EN BLANCO')
+    620                    FECHA          8Y 0B 10 22EDTCDE(Z)                                8           59      54
+    630          31                                  ERRMSG('31-Fecha no es Valida, Veri-
+    630                                              fique')
+               * Posiciones de almacenamiento intermedio de salida indicador de opción:
+               *  *IN08 0001
+    650                  R SC03
+                 *DS3                                WINDOW(18 10 4 60)
+    680                                              WDWBORDER((*DSPATR RI) (*CHAR '    -
+    680                                                  '))
+    700                    MSG           58A  O  2  2                                        58            2
+    710          08        SINO           1A  B  3 25VALUES('S' 'N')                          1           60       1
+    720                                          3 27'(S=si, N=no)'                          12
+                 * * * * *   F I N   D E   F U E N T E   A M P L I A D O   * * * * *
+ 5770SS1 V7R4M0  190621                  Descripción de datos           JULIOLIB/MDP01SCJ       20/05/22 10:54:43      Página    5
+                                       Resumen de mensajes
+    Total          Informativo            Aviso          Error       Grave
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Mensaje . . . . :   Archivo MDP01SCJ creado en la biblioteca JULIOLIB.
+                         * * * * *   F I N   D E   C O M P I L A C I Ó N   * * * * *
