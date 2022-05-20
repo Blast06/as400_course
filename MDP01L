@@ -1,0 +1,60 @@
+H   DATFMT(*ISO)                                                            
+H   DATEDIT(*DMY)                                                           
+ *------------------- QRPGLESRC                                                      
+ *Descripcion de Archivos a utilizar                                        
+ *-------------------                                                       
+FTBDP0101  UF A E           K DISK                                          
+FMDP01SCJ  CF   E             WORKSTN                                       
+ *-------------------                                                       
+ *Logica del Programa                                                       
+ *-------------------                                                       
+C                   DOW         NOT  *IN03                                  
+C                   EXFMT     SC01                                          
+C   03              LEAVE                                                   
+ *Valida Id                                                                 
+C                   IF         IDDP01=0                                     
+C                   SETON                                        30         
+C                   ITER                                                    
+C                   ENDIF                                                   
+C     IDDP01        CHAIN     TBDP0101                           40    
+0019.00 c     IDDP01        CHAIN     TBDP0101                           40                                
+0020.00 C  N40              MOVE      FECR01        FECHA                                                  
+0021.00 C                   SETOFF                                       10                                
+0022.00 C                   DOW        NOT *IN10                                                           
+0023.00 C                   EVAL       SINO=' '                                                            
+0024.00 C                   EXFMT     SC02                                                                 
+0025.00 C                   SETOFF                                       313280                            
+0026.00  **Valida Teclas de funciones F12 y F3                                                             
+0027.00 C                   IF         *IN12 OR *IN03                                                      
+0028.00 C                   LEAVE                                                                          
+0029.00 C                   ENDIF                                                                          
+0030.00  *borrar registro                                                   
+0031.00 C                   IF          NOT *IN40 AND *IN08                 
+0032.00 C                   EVAL       MSG='REALMENTE DESEA BORRAR?'        
+0033.00 C                   EXFMT     SC03                                  
+0034.00 C                   IF        SINO='S'                              
+0035.00 C                   DELETE    RDP01                                 
+0036.00 C                   SETON                                        80 
+0037.00 C                   SETOFF                                       08 
+0038.00 C                   EVAL      MSG='REGISTRO BORRADO'                
+0039.00 C                   EXFMT     SC03                                  
+ C                   LEAVE                                                    
+ C                   ELSE                                                     
+ C                   ITER                                                     
+ C                   ENDIF                                                    
+ C                   ENDIF                                                    
+  *Valida Descripcion                                                         
+ C                   IF        DEDP01=' '                                     
+ C                   EVAL      MSG='CAMPO NO PUEDE ESTAR EN -                 
+ C                             BLANCO, VERIFIQUE'                             
+ C                   EXFMT     SC03                                           
+ C                   ITER                                                     
+ C                   ENDIF                                                    
+  *validad Fecha                                                              
+ C     *YMD          TEST(D)                 FECHA                  31        
+ C   31              ITER                                                     
+  *Si no existe registro, lo creamos, de los contrario actualizamos           
+ C                   MOVE      FECHA         FECR01                           
+ C                   IF         *IN40                                         
+ C                   WRITE     RDP01                                          
+ C                   ELSE                                                     
