@@ -1,0 +1,72 @@
+ 5770SS1 V7R4M0 190621                           Registro de trabajo         ALAVERD   26/05/22  19:17:58 UTC-04:00S   Página    1
+  Nombre de trabajo  . . . . . :   SNEMP07SJ       Usuario . . . . . . : JDELGADO     Número . . . . . . . . . . . :   185470
+  Descripción trabajo . . . . . :  QBATCH          Biblioteca  . . . :   QGPL
+IDMSJ      TIPO                  SEV  FECHA      HORA             DE PGM     BIBLIOTECA     INST     A PGM      BIBLIOTECA     INST
+CPF1124    Informativo             00   26/05/22  19:17:58.309151  QWTPIIPP     QSYS        04CC     *EXT                    *N
+                                     Mensaje . . . . :   Trabajo 185470/JDELGADO/SNEMP07SJ arrancado el 26/05/22 a
+                                       las 19:17:58 en el subsistema QBATCH en QSYS. Trabajo introducido en el
+                                       sistema el 26/05/22 a las 19:17:58.
+CPI1125    Informativo             00   26/05/22  19:17:58.309883  QWTPCRJA     QSYS        0110     *EXT                    *N
+                                     Mensaje . . . . :   Se ha sometido el trabajo 185470/JDELGADO/SNEMP07SJ.
+                                     Causa . . . . . :   Se ha sometido el trabajo 185470/JDELGADO/SNEMP07SJ a la
+                                       cola de trabajos QBATCH de QGPL desde el trabajo 185441/JDELGADO/QPADEV008L.
+                                       El trabajo 185470/JDELGADO/SNEMP07SJ se ha arrancado utilizando el mandato
+                                       Someter Trabajo (SBMJOB) con los siguientes atributos de trabajo: JOBPTY(5)
+                                       OUTPTY(5) PRTTXT() RTGDTA(QCMDB) SYSLIBL(QSYS       QSYS2      QHLPSYS
+                                       QUSRSYS    CTEUNI     CLI.LIBR   CAJ.LIBR   SOL.LIBR   FIN.LIBR   CMDSSP
+                                       CHDLIBR) CURLIB(*CRTDFT) INLLIBL(JULIOLIB   QGPL       QTEMP)
+                                       INLASPGRP(*NONE) LOG(4 00 *NOLIST) LOGCLPGM(*NO) LOGOUTPUT(*JOBLOGSVR)
+                                       OUTQ(/*DEV) PRTDEV(WG) INQMSGRPY(*RQD) HOLD(*NO) DATE(*SYSVAL) SWS(00000000)
+                                       MSGQ(QUSRSYS/JDELGADO) CCSID(65535) SRTSEQ(*N/*HEX) LANGID(ESP) CNTRYID(ES)
+                                       JOBMSGQMX(64) JOBMSGQFL(*PRTWRAP) ALWMLTTHD(*NO) SPLFACN(*KEEP) ACGCDE().
+*NONE      Petición                     26/05/22  19:17:58.310372  QWTSCSBJ                 *N       QCMD        QSYS        0195
+                                     Mensaje . . . . :  -CRTDSPF         JULIOLIB/SNEMP07SJ    JULIOLIB/QDDSSRC
+                                        SNEMP07SJ  GENLVL(20) FLAG(00)              REPLACE(*NO )
+CPF7311    Diagnóstico             30   26/05/22  19:17:58.317584  QDDCDPF      QSYS        0531     QCMD        QSYS        01C8
+                                     Mensaje . . . . :   Errores en las DDS no permitidos con el GENLVL
+                                       especificado.
+                                     Causa . . . . . :   El nivel de gravedad de los errores encontrados en las DDS
+                                       ha sido mayor o igual que el nivel de error de generación (parámetro
+                                       GENLVL), o se ha especificado GENLVL(0). Recuperación . .:   Vea el listado
+                                       fuente DDS para el valor GENLVL y los mensajes de error. Corrija los errores
+                                       o cambie el valor GENLVL en el mandato y luego vuelva a intentar la
+                                       petición.
+CPF7302    Escape                  40   26/05/22  19:17:58.328839  QDDCDPF      QSYS        0531     QCMD        QSYS        01C8
+                                     Mensaje . . . . :   Archivo SNEMP07SJ no creado en biblioteca JULIOLIB.
+                                     Causa . . . . . :   El archivo no se ha creado debido a errores. Recuperación
+                                       . .:   Vea los mensajes de error listados anteriormente. Corrija los errores
+                                       y vuelva a someter la petición.
+CPC2402    Terminación             50   26/05/22  19:17:58.329717  QCMD         QSYS        066F     *EXT                    *N
+                                     Mensaje . . . . :   Trabajo finalizado. El procesador de mandatos ha recibido
+                                       un mensaje de cancelación.
+                                     Causa . . . . . :   El procesador de mandatos recibió un mensaje con una
+                                       gravedad igual o superior a la gravedad de finalización. Recuperación . .:
+                                       Vea los mensajes listados anteriormente para determinar qué mensaje provocó
+                                       la finalización del trabajo. Corrija los errores y vuelva a someter la
+                                       petición.
+CPF1164    Terminación             00   26/05/22  19:17:58.330399  QWTMCEOJ     QSYS        0161     *EXT                    *N
+                                     Mensaje . . . . :   Trabajo 185470/JDELGADO/SNEMP07SJ finalizado el 26/05/22 a
+                                       las 19:17:58; se utilizaron .020 segundos; código de finalización 20 .
+                                     Causa . . . . . :   El trabajo 185470/JDELGADO/SNEMP07SJ se ha completado el
+                                       26/05/22 a las 19:17:58 después de utilizar un tiempo de unidad de proceso
+                                       de .020 segundos. El almacenamiento temporal máximo utilizado es de 7
+                                       megabytes. El trabajo tuvo el código de finalización 20. El trabajo finalizó
+                                       después de 1 pasos de direccionamiento con un código de finalización
+                                       secundario 0.  Los códigos de finalización de trabajo y sus significados son
+                                       los siguientes:  0 - El trabajo se completó normalmente. 10 - El trabajo se
+ 5770SS1 V7R4M0 190621                           Registro de trabajo         ALAVERD   26/05/22  19:17:58 UTC-04:00S   Página    2
+  Nombre de trabajo  . . . . . :   SNEMP07SJ       Usuario . . . . . . : JDELGADO     Número . . . . . . . . . . . :   185470
+  Descripción trabajo . . . . . :  QBATCH          Biblioteca  . . . :   QGPL
+IDMSJ      TIPO                  SEV  FECHA      HORA             DE PGM     BIBLIOTECA     INST     A PGM      BIBLIOTECA     INST
+                                       completó normalmente durante una finalización controlada o una finalización
+                                       del subsistema controlada. 20 - El trabajo excedió la gravedad de
+                                       finalización (atributo de trabajo ENDSEV). 30 - El trabajo finalizó de forma
+                                       anómala. 40 - El trabajo finalizó antes de pasar a activo. 50 - El trabajo
+                                       finalizó mientras estaba activo. 60 - El subsistema finalizó de forma
+                                       anómala mientras el trabajo estaba activo. 70 - El sistema finalizó de forma
+                                       anómala mientras el trabajo estaba activo. 80 - El trabajo finalizó (mandato
+                                       ENDJOBABN). 90 - Se forzó la finalización del trabajo después de que
+                                       terminara el límite de tiempo (mandato ENDJOBABN). Recuperación . .:   Para
+                                       obtener más información, consulte el temario de gestión de trabajos dentro
+                                       de la categoría Gestión de sistemas del Information Center de IBM i,
+                                       http://www.ibm.com/systems/i/infocenter/.
