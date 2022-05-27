@@ -1,0 +1,56 @@
+*----Periodo de Nomina
+create table tbpeno04(snanme04 Numeric(6,0),snperi04 Numeric(1,0),sndepe04 Char(40),
+snstat04 Numeric(1,0),sncapr04 Numeric(3,0),sncade04 Numeric(3,0),snesta04 Numeric(1,0), sncrea04 Char(10),sncino04 Char(10))
+
+*- snstat04=0,1 status periodo abierto o cerrado
+*-snesta04= 1, en prueba, 2 definitiva, 3 pagada, 4 cerrada (estado de la nomina)
+
+*---Transacciones de nomina
+create table tbtran05(snnutr05 Numeric(3,0),sndeco05 Char(10),sndela05 Char(40),sntitr05 Char(1),;
+snfotr05 Char(1),snvitr05 Char(1),sncatr05 Char(1),snfcal05 Numeric(7,5))
+
+*---sntitr=Tipo de transaccion (I=ingreso, e-Egreso)
+*---snfotr=Forma de calculo (F=fijo, A=amortizable)
+*---sncatr=Caracterisitica (P=Permanente T=temporal
+*---scvitr=Via de entrada (D=Digitada, A=automatica)
+
+**--- Maestra de Empleados
+create table tbempl07(snnuem07 Numeric(5,0),snnoem07 Char(40), snapem07 Char(40), sndiem07 Char(100),sncedu07 Numeric(11,0),
+sntele07 Numeric(10,0),sncelu07 Numeric(10,0), snocel07 Numeric(10,0),snsexo07 Char(1),snfena07 d,scesci07 Char(1),
+sncoel07 Char(60),snfein07 d,snnude07 Numeric(6,0),snnuca07 Numeric(3,0),snsuel07 Numeric(9,2),sntino07 Char(1),snboni07 Char(1),snstat07 Char(1))
+
+**-- snsexo (M, F, I)  -- Masculino, Femenino, Indefinido
+**-- snesci (C, S) -- Casado, Soltero
+**-- sntino (A, R) -- Administracion, Regular
+**-- snboni (S, N) --pago de bonificacion (si o no)
+**-- snstat (A, C) -- status activo o cancelado
+
+
+
+create index juliolib/tbempl0701 on juliolib/tbempl07 (SNCEDU07)
+
+
+alter table tbempl07 alter column snnude07 set data type numeric(5,0)
+
+
+create table juliolib.tbempl07(
+snnuem07 Numeric(5,0),
+snnoem07 Char(40), 
+snapem07 Char(40), 
+sndiem07 Char(100),
+sncedu07 Numeric(11,0),
+sntele07 Numeric(10,0),
+sncelu07 Numeric(10,0),
+ snocel07 Numeric(10,0),
+ snsexo07 Char(1),
+ snfena07 date ,
+ scesci07 Char(1),
+sncoel07 Char(60),
+snfein07 date,
+snnude07 Numeric(6,0),
+snnuca07 Numeric(3,0),
+snsuel07 Numeric(9,2),
+sntino07 Char(1),
+snboni07 Char(1),
+snstat07 Char(1)
+)
