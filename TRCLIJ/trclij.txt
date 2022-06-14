@@ -1,0 +1,136 @@
+  5770WDS V7R4M0  190419                  LISTADO FUENTE SEU                            14/06/22 17:55:58    ALAVERD      PÁG.    1
+  ARCHIVO FUENTE  . . . . .  JULIOLIB/QRPGLESRC
+  MIEMBRO . . . . . . . . .  TRCLIJ
+  SEQNBR*...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+... 0
+      1      fmov80tr   if   e           k disk     rename(mov80:m80)                                                   09/06/22
+      2      fclp80dc   if   e           k disk     rename(clpe80:cl80)                                                 09/06/22
+      3      fcta80ct   if   e           k disk     rename(cta80:ct80)                                                  09/06/22
+    100      ftrclisj   cf   e             workstn sfile(sc01:recno)                                                    09/06/22
+    101      f                                     sfile(sc04:recno1)                                                   09/06/22
+    102       *---Estructura de datos, cursor temporal                                                                  02/06/22
+    200      d curds           ds                                                                                       02/06/22
+    201      d tiptr                          1A                                                                        07/06/22
+    400      d nutr                           4p 0                                                                      07/06/22
+    401      d destr                         40a                                                                        07/06/22
+    500      d ctmov                          4s 0                                                                      07/06/22
+    501      d monto                         13p 2                                                                      07/06/22
+    700       *----------------                                                                                         02/06/22
+    800      c                   exsr      llenasf                                                                      02/06/22
+    801      c                   exsr      selection                                                                    09/06/22
+    802      c                   seton                                        lr                                        02/06/22
+    803                                                                                                                 02/06/22
+    900      c     llenasf       begsr                                                                                  02/06/22
+    901      c                   seton                                        50                                        02/06/22
+    902      c                   write     sc02                                                                         02/06/22
+    903      c                   setoff                                       50                                        02/06/22
+    904      c                   z-add     0             recno             3 0                                          02/06/22
+    905      c                   z-add     1             numrel                                                         09/06/22
+   1000      c/exec sql                                                                                                 02/06/22
+   1100      c+ DECLARE c1 cursor for                                                                                   02/06/22
+   1101      c+ select a.trxdc as tiptr, a.trxcod as nutr,trxdes as destr,                                              07/06/22
+   1102      c+ count(*) as ctmov, sum(mval) as monto                                                                   07/06/22
+   1103      c+ from "TRX80" A, "MOV80" B                                                                               07/06/22
+   1104      C+ WHERE mvdbcr=trxdc  and b.trxcod=a.trxcod                                                               07/06/22
+   1105      c+ group by a.trxdc,a.trxcod ,trxdes                                                                       07/06/22
+   1600      c+ ORDER by a.trxdc  for fetch only                                                                        07/06/22
+   1700      c/end-exec                                                                                                 02/06/22
+   1800                                                                                                                 02/06/22
+   1900      c/exec sql                                                                                                 02/06/22
+   2000      c+ open c1                                                                                                 02/06/22
+   2100      c/end-exec                                                                                                 02/06/22
+   2200                                                                                                                 02/06/22
+   2300      c                   do        9999999                                                                      02/06/22
+   2400      c/exec sql                                                                                                 02/06/22
+   2500      c+ fetch c1 into :curds                                                                                    02/06/22
+   2600      c/end-exec                                                                                                 02/06/22
+   2700      c                   if        sqlstt='02000'                                                               02/06/22
+   2800      c                   leave                                                                                  02/06/22
+   2900      c                   endif                                                                                  02/06/22
+   3000      c                   eval      recno=recno+1                                                                02/06/22
+   3100      c                   write     sc01                                                                         02/06/22
+   3101      c                   if         recno=0                                                                     02/06/22
+   3102      c                   eval      recno=recno+1                                                                02/06/22
+   3103      c                   write     sc01                                                                         02/06/22
+   3104      c                   endif                                                                                  02/06/22
+   3200      c                   enddo                                                                                  02/06/22
+   3300      c                   write     sc02                                                                         02/06/22
+   3400      c                   exfmt     sc03                                                                         02/06/22
+  5770WDS V7R4M0  190419                  LISTADO FUENTE SEU                            14/06/22 17:55:58    ALAVERD      PÁG.    2
+  ARCHIVO FUENTE  . . . . .  JULIOLIB/QRPGLESRC
+  MIEMBRO . . . . . . . . .  TRCLIJ
+  SEQNBR*...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+... 0
+   3500      c                                                                                                          02/06/22
+   3600       *                                                                                                         02/06/22
+   3700      c/exec sql                                                                                                 02/06/22
+   3800      c+ close c1                                                                                                02/06/22
+   3900      c/end-exec                                                                                                 02/06/22
+   4000      c                   endsr                                                                                  02/06/22
+   4100       *Seleccion de registro del subfile                                                                        09/06/22
+   4200      c     selection     begsr                                                                                  09/06/22
+   4300      c                   z-add     recno         puntero           4 0                                          09/06/22
+   4400      c                   setoff                                       10                                        09/06/22
+   4500      c                   clear                   sel                                                            09/06/22
+   4600      c                   dow       not *in10                                                                    09/06/22
+   4601      c                   write     sc03                                                                         09/06/22
+   4701      c                   exfmt     sc02                                                                         09/06/22
+   4703      c                   if         *in03                                                                       09/06/22
+   4704      c                   seton                                        lr                                        09/06/22
+   4705      c                   return                                                                                 09/06/22
+   4706      c                   endif                                                                                  09/06/22
+   4707      c                   clear                   sel                                                            09/06/22
+   5400       *                                                                                                         09/06/22
+   5500      c                   z-add     1             puntero                                                        09/06/22
+   5700      c                   setoff                                       73                                        09/06/22
+   5701       *---Lee secuencialmente el Subfile                                                                        09/06/22
+   5800      c                   dow       not *in73                                                                    09/06/22
+   5900      c     puntero       chain     sc01                               73                                        09/06/22
+   6000      c   73              leave                                                                                  09/06/22
+   6100      c                   if        sel='1'                                                                      09/06/22
+   6101      c                   eval      numrel=recno                                                                 09/06/22
+   6300      c                   exsr      detalle                                                                      09/06/22
+   6301      c                   clear                   sel                                                            09/06/22
+   6500      c                   endif                                                                                  09/06/22
+   7000      c                   add       1             puntero                                                        09/06/22
+   7100      C                   enddo                                                                                  09/06/22
+   8500      c                   clear                   puntero                                                        09/06/22
+   8600      c   10              leave                                                                                  09/06/22
+   8700      c                   enddo                                                                                  09/06/22
+   8800      c                   endsr                                                                                  09/06/22
+   8900       ***Presena detalle                                                                                        09/06/22
+   9000      c     detalle       begsr                                                                                  09/06/22
+   9100      c                   seton                                        51                                        09/06/22
+   9200      c                   write     sc05                                                                         09/06/22
+   9300      c                   setoff                                       51                                        09/06/22
+   9400      c                   z-add     0             recno1            4 0                                          09/06/22
+   9500      c                   setoff                                       71                                        09/06/22
+   9501      c     nutr          setll     mov80tr                                                                      09/06/22
+   9600      c                   dow          not*in71                                                                  09/06/22
+   9700      c     nutr          reade     mov80tr                                71                                    09/06/22
+   9701      c   71              leave                                                                                  09/06/22
+   9702       **Clave para acceder a la cuenta                                                                          09/06/22
+   9800      c     kcta          klist                                                                                  09/06/22
+   9900      c                   kfld                    prtipo                                                         09/06/22
+  10000      c                   kfld                    dpagen                                                         09/06/22
+  10100      c                   kfld                    dpcorr                                                         09/06/22
+  5770WDS V7R4M0  190419                  LISTADO FUENTE SEU                            14/06/22 17:55:58    ALAVERD      PÁG.    3
+  ARCHIVO FUENTE  . . . . .  JULIOLIB/QRPGLESRC
+  MIEMBRO . . . . . . . . .  TRCLIJ
+  SEQNBR*...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+... 0
+  10200      c                   kfld                    dpdive                                                         09/06/22
+  10300      c     kcta          chain     cta80ct                                                                      09/06/22
+  10400      c     cldoc         chain     clp80dc                            72                                        10/06/22
+  10500      c   72              iter                                                                                   09/06/22
+  10600      c                   eval      cldc=%trim(cldoc)                                                            09/06/22
+  10700      c                   eval      nombre=%trim(clino1)+' '+%trim(clino2) +                                     09/06/22
+  10800      c                             ' '+%trim(cliap1)+' '+cliap2                                                 09/06/22
+  10900      C                   add       1             recno1                                                         09/06/22
+  11000      c                   write     sc04                                                                         09/06/22
+  11100      c                   enddo                                                                                  09/06/22
+  11200      c                   if        recno1=0                                                                     09/06/22
+  11300      C                   add       1             recno1                                                         09/06/22
+  11400      c                   write     sc04                                                                         09/06/22
+  11500      c                   endif                                                                                  09/06/22
+  11600      c                   write     sc05                                                                         09/06/22
+  11700      c                   exfmt     sc06                                                                         09/06/22
+  11800      c                   endsr                                                                                  09/06/22
+                                  * * * *  F I N  D E  F U E N T E  * * * *
