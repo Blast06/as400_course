@@ -1,0 +1,104 @@
+ H  datfmt(*iso) datedit(*ymd)
+ fSQLSC1    cf   e             workstn sfile(sc01sf:recno)
+ ftbempl071 IF   e             disk    RENAME(tbempl07:rempl)
+ 
+ denc              c                   'Numero Nombre                     -
+ d                                                      Fecha        Sueldo'
+ denc1             c                   'Numero Nombre                     -
+ d                                                  Depto       Cedula'
+ D RWSP47          DS
+ D  nu1                           5S 0
+ D  NO1                          40A
+ D  FEC                            d
+ D  SUEL                          9S 2
+
+D RWSP48          DS
+D  num                           5S 0
+D  NOM                          40A
+D  CEDU                         11S 0
+D  DPTO                          5S 0
+
+C                   EXFMT     SC04
+c                   if         forma=1
+c                   eval      encab=enc
+c                   else
+c                   eval      encab=enc1
+c                   endif
+
+c                   exsr      llenasf
+c                   seton                                        lr
+c     llenasf       begsr
+ c                   seton                                        50
+ C                   CLEAR                   recno             4 0
+ c                   write     sc02ct
+ c                   setoff                                       5099
+ C                   IF        FORMA=1
+  * Definición y apertura de Cursor
+ C/Exec Sql
+ C+ Declare C1    Cursor for
+ C+   SELECT
+ C+     SNNUEM07 AS NU1,SNNOMB07 AS nO1,SNFENA07 AS FEC,SUEL
+ C+         FROM "TBEMPL07"
+ C+         ORDER BY SNNUEM07
+ C+         For Fetch Only
+ C/End-Exec
+ C                   ELSE
+ C/Exec Sql
+ C+ Declare C2    Cursor for
+ C+   SELECT
+ C+     SNNUEM07 AS num,SNNOMB07 AS NOM,CEDU,DPTO
+ C+         FROM "TBEMPL07"
+ C+         ORDER BY DPTO
+ C+         For Fetch Only
+ C/End-Exec
+ C                   ENDIF
+
+
+ C                   IF        FORMA=1
+ C/Exec Sql
+ C+         Open C1
+ C/End-Exec
+ C                   ELSE
+ C/Exec Sql
+ C+         Open C2
+ C/End-Exec
+ C                   ENDIF
+ C                   DO        999999
+  * Obtiene un registro desde el cursor
+ C                   IF        FORMA=1
+ C/Exec Sql
+ C+         Fetch C1    Into :RWSP47
+ C/End-Exec
+ C                   ELSE
+ C/Exec Sql
+
+ C+         Fetch C2    Into :RWSP48
+ C/End-Exec
+ C                   ENDIF
+ C     SQLSTT        IFEQ      '02000'
+ C                   LEAVE
+ C                   ENDIF
+  *
+ C                   IF         FORMA=1
+ C                   eval      unido= (%editc(nu1 :'Z'))+'  '+
+ C                              (NO1)+' '+ %char(FEC )
+ c                              +'   '+ %trim(%editc(suel :'B': *ASTFILL))
+ C                   ELSE
+ C                   eval      unido=(%editc(num :'Z'))+'  '+
+ C                             (NOM)+' '+ (%editc(DPTO: 'Z'))
+ c                             +' '+(%editw(CEDU:'   -       - ' ))
+ C
+ C                   ENDIF
+ c                   eval      recno=recno+1
+ c                   write     sc01sf
+ C                   ENDDO
+ c                   write     sc02ct
+ c                   exfmt     sc03
+  * Cierre del cursor
+ C/Exec Sql
+ C+         Close C1
+ C/End-Exec
+ C/Exec Sql
+ C+         Close C2
+ C/End-Exec
+ C                   ENDSR
